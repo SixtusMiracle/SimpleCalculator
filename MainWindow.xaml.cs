@@ -21,12 +21,15 @@ namespace SimpleCalculator
   public partial class MainWindow : Window
   {
     double currentValue = 0;
+
+    public double CurrentValue { get => currentValue; set => currentValue = value; }
+
     enum Operation { Add, Subtract, Multiply, Divide, Equals, Start };
 
     public MainWindow()
     {
       InitializeComponent();
-      txtOut.Text = currentValue.ToString();
+      txtOut.Text = CurrentValue.ToString();
     }
 
     private void BtnEntry_Click(object sender, RoutedEventArgs e)
@@ -34,19 +37,28 @@ namespace SimpleCalculator
       int value;
 
       // get value entered by user
-      Button btn = (Button) sender;
+      Button btn = (Button)sender;
       String valueEntered = btn.Content.ToString();
 
       // converting it to int if it is an int
       if (Int32.TryParse(valueEntered, out value))
       {
+        if (txtOut.Text.Equals("0"))
+        {
+          txtOut.Text = valueEntered;
+        }
+        else
+        {
           txtOut.Text += valueEntered;
-      } else if (valueEntered.Equals("."))
+        }
+      }
+      else if (valueEntered.Equals("."))
       {
         if (txtOut.Text.Contains("."))
         {
-            return;
-        } else txtOut.Text += valueEntered;
+          return;
+        }
+        else { txtOut.Text += valueEntered; }
       }
     }
 
@@ -74,11 +86,14 @@ namespace SimpleCalculator
     //Clear the current results
     private void BtnClear_Click(object sender, RoutedEventArgs e)
     {
+      CurrentValue = 0;
+      txtOut.Text = CurrentValue.ToString();
     }
 
     //Handle the Equals button
     private void BtnEquals_Click(object sender, RoutedEventArgs e)
     {
+      
     }
   }
 }
