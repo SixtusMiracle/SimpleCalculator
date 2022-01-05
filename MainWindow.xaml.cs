@@ -31,6 +31,23 @@ namespace SimpleCalculator
 
     private void BtnEntry_Click(object sender, RoutedEventArgs e)
     {
+      int value;
+
+      // get value entered by user
+      Button btn = (Button) sender;
+      String valueEntered = btn.Content.ToString();
+
+      // converting it to int if it is an int
+      if (Int32.TryParse(valueEntered, out value))
+      {
+          txtOut.Text += valueEntered;
+      } else if (valueEntered.Equals("."))
+      {
+        if (txtOut.Text.Contains("."))
+        {
+            return;
+        } else txtOut.Text += valueEntered;
+      }
     }
 
     private void Calculate(Operation op)
