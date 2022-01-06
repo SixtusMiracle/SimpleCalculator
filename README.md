@@ -1,4 +1,8 @@
 # Simple Calculator
-A simple calculator built with c#
+A simple calculator built with c# wpf
 
-<!-- ## Features -->
+## Features
+- Addition
+- Subtraction
+- Multplication
+- Division
