@@ -6,3 +6,7 @@ A simple calculator built with c# wpf
 - Subtraction
 - Multplication
 - Division
+
+## Donate
+
+You can support me via [Barter](https://barter.me/sixtusagbo)
